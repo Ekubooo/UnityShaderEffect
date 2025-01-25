@@ -8,7 +8,7 @@
 
 /Library
 
-/.vscode
+/Asstes
 
 # ----[ Visual Studio / MonoDevelop generated ]------- #
 
@@ -34,7 +34,11 @@ ExportedObj/
 
 *.booproj
 
+Logs
 
+Packages
+
+UserSettings
 
 # -------------[ OS generated ]------------------------ #
 
@@ -53,3 +57,4 @@ Icon?
 ehthumbs.db
 
 Thumbs.db
+
