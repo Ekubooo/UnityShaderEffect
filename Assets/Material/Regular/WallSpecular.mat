@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BDiffuse
+  m_Name: WallSpecular
   m_Shader: {fileID: 4800000, guid: 33e763d019e195f499aa314db1c784d8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 7924b67635c61eb4287b4c208bd3f55f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6c39aeae04f854f44aa7178f5032ef8b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 171e8fc001bef554e92745b7b241a972, type: 3}
+        m_Texture: {fileID: 2800000, guid: a128158e1a0ec6843b7b479264afe904, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
