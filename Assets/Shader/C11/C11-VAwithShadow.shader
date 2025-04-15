@@ -5,9 +5,9 @@ Shader "C11/VAwithShadow" {
 	{
 		_MainTex ("Main Tex", 2D) = "white" {}
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)
-		_Magnitude ("Distortion Magnitude", Float) = 1
+		_Magnitude ("Distortion Magnitude", Float) = 0.5
  		_Frequency ("Distortion Frequency", Float) = 1
- 		_InvWaveLength ("Distortion Inverse Wave Length", Float) = 10
+ 		_InvWaveLength ("Distortion Inverse Wave Length", Float) = 5
  		_Speed ("Speed", Float) = 0.5
 	}
 
