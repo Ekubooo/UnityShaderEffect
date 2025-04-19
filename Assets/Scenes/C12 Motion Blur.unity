@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 395967829}
   - component: {fileID: 395967832}
   - component: {fileID: 395967833}
+  - component: {fileID: 395967834}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -240,13 +241,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395967828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f2c9d0335960744f9612a196ca4e00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   motionBlurShader: {fileID: 4800000, guid: 2e6fadc73fd19d94fa34e77cfbab16cd, type: 3}
   blurAmount: 0
+--- !u!114 &395967834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395967828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ac11f9c9ab64249943a9ff32b818dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motionBlurShader: {fileID: 4800000, guid: b30e3a1e1e8a22040bd3401a1376377d, type: 3}
+  blurSize: 0.1
 --- !u!1 &652749515
 GameObject:
   m_ObjectHideFlags: 0
