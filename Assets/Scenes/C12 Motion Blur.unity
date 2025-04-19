@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 395967833}
   - component: {fileID: 395967834}
   - component: {fileID: 395967835}
+  - component: {fileID: 395967836}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -242,7 +243,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395967828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f2c9d0335960744f9612a196ca4e00e, type: 3}
   m_Name: 
@@ -256,7 +257,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395967828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ac11f9c9ab64249943a9ff32b818dd, type: 3}
   m_Name: 
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395967828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 273e7d934e0042845ba0214fde912608, type: 3}
   m_Name: 
@@ -280,6 +281,25 @@ MonoBehaviour:
   fogColor: {r: 0.81761, g: 0.81761, b: 0.81761, a: 1}
   fogStart: 0
   fogEnd: 1.5
+--- !u!114 &395967836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395967828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428dfaaa29311e24cb2fdbab158e05f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edgeDetectShader: {fileID: 4800000, guid: 6667aebbf95548145a077caf7939f262, type: 3}
+  edgesOnly: 1
+  edgeColor: {r: 0, g: 0, b: 0, a: 1}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  sampleDistance: 2
+  sensitivityDepth: 4.0625
+  sensitivityNormals: 2
 --- !u!1 &652749515
 GameObject:
   m_ObjectHideFlags: 0
