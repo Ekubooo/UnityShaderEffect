@@ -7,14 +7,21 @@ Shader "C14/NPR Combine"
     {
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)        
         _TileFactor ("Tile Factor", Range(5,25)) = 10
+
+        _MainTex ("Mian Texture", 2D) = "white" {}
+        _Ramp ("Ramp Texture", 2D) = "white" {}
+
 		_Hatch0 ("Hatch 0", 2D) = "white" {}
 		_Hatch1 ("Hatch 1", 2D) = "white" {}
 		_Hatch2 ("Hatch 2", 2D) = "white" {}
 		_Hatch3 ("Hatch 3", 2D) = "white" {}
 		_Hatch4 ("Hatch 4", 2D) = "white" {}
 		_Hatch5 ("Hatch 5", 2D) = "white" {}
+		
 		_OutLine ("Outline", Range(0,1)) = 0.0075
         _OutLineColor ("Outline color", Color) = (0,0,0,1)
+		_Specular ("Specular", Color) = (1,1,1,1)
+        _SpecularScale("Specular Scale", Range(0,0.1)) = 0.01 
 	}
 	
 	SubShader 
@@ -22,10 +29,13 @@ Shader "C14/NPR Combine"
 		Tags {"RenderType" = "Opaque"}
         Tags {"Queue" = "Geometry"}
 		UsePass "C14/Toon/OUTLINE"
+		UsePass "C14/Toon/TOON"
+		
 		Pass 
         {
 			Tags {"LightMode" = "ForwardBase"}
-			
+			Cull Back
+
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag 
