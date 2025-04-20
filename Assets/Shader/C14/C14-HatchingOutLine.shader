@@ -3,7 +3,7 @@
 
 ///  Reference: 	Praun E, Hoppe H, Webb M, et al. Real-time hatching[C]
 ///						Proceedings of the 28th annual conference on Computer graphics and interactive techniques. ACM, 2001: 581.
-Shader "C14/HatchingExample"
+Shader "C14/HatchingAndOutLine"
 {
 	Properties 
     {
@@ -16,6 +16,8 @@ Shader "C14/HatchingExample"
 		_Hatch3 ("Hatch 3", 2D) = "white" {}
 		_Hatch4 ("Hatch 4", 2D) = "white" {}
 		_Hatch5 ("Hatch 5", 2D) = "white" {}
+		_OutLine ("Outline", Range(0,1)) = 0.0075
+        _OutLineColor ("Outline color", Color) = (0,0,0,1)
 	}
 	
 	SubShader 

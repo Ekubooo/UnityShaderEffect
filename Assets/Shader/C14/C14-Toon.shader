@@ -9,7 +9,7 @@ Shader "C14/Toon"
         _Color ("Color Tint", Color) = (1,1,1,1)
         _MainTex ("Mian Texture", 2D) = "white" {}
         _Ramp ("Ramp Texture", 2D) = "white" {}
-        _OutLine ("Outline", Range(0,1)) = 0.1
+        _OutLine ("Outline", Range(0,1)) = 0.0075
         _OutLineColor ("Outline color", Color) = (0,0,0,1)
         _Specular ("Specular", Color) = (1,1,1,1)
         _SpecularScale("Specular Scale", Range(0,0.1)) = 0.01 
@@ -23,8 +23,8 @@ Shader "C14/Toon"
             NAME "OUTLINE"
             Cull Front
             CGPROGRAM
-            #pragma vertex vert
-			#pragma fragment frag
+            #pragma vertex vertOL
+			#pragma fragment fragOL
 			#include "UnityCG.cginc"
 
             float _OutLine;
@@ -41,7 +41,7 @@ Shader "C14/Toon"
                 float4 pos : SV_POSITION;
             };
             
-            v2f vert (a2v v)
+            v2f vertOL (a2v v)
             {
                 v2f o;
                 float4 pos = mul(UNITY_MATRIX_MV, v.vertex);
@@ -56,7 +56,7 @@ Shader "C14/Toon"
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 fragOL (v2f i) : SV_Target
             {
                 return float4 (_OutLineColor.rgb, 1);
             }
