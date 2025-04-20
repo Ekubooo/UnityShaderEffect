@@ -15,7 +15,9 @@ Shader "C14/HatchingAndOutLine"
 		_Hatch3 ("Hatch 3", 2D) = "white" {}
 		_Hatch4 ("Hatch 4", 2D) = "white" {}
 		_Hatch5 ("Hatch 5", 2D) = "white" {}
+
 		_OutLine ("Outline", Range(0,0.01)) = 0.0075
+        _OutLineColor ("Outline color", Color) = (0,0,0,1)
 	}
 	
 	SubShader 
