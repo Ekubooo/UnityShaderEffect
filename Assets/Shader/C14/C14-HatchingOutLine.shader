@@ -8,16 +8,17 @@ Shader "C14/HatchingAndOutLine"
 	Properties 
     {
 		_Color ("Color Tint", Color) = (1, 1, 1, 1)        
-        _TileFactor ("Tile Factor", Range(5,25)) = 10
+        _TileFactor ("Tile Factor", Range(5.0,15.0)) = 10.0
+		_diffRange ("Range of diffuse", Range(7.0, 14.0)) = 8.0
+		_OutLine ("Outline", Range(0,0.025)) = 0.0075
+        _OutLineColor ("Outline color", Color) = (0,0,0,1)
+
 		_Hatch0 ("Hatch 0", 2D) = "white" {}
 		_Hatch1 ("Hatch 1", 2D) = "white" {}
 		_Hatch2 ("Hatch 2", 2D) = "white" {}
 		_Hatch3 ("Hatch 3", 2D) = "white" {}
 		_Hatch4 ("Hatch 4", 2D) = "white" {}
 		_Hatch5 ("Hatch 5", 2D) = "white" {}
-
-		_OutLine ("Outline", Range(0,0.01)) = 0.0075
-        _OutLineColor ("Outline color", Color) = (0,0,0,1)
 	}
 	
 	SubShader 
@@ -40,6 +41,7 @@ Shader "C14/HatchingAndOutLine"
 			#include "UnityShaderVariables.cginc"
 			
 			fixed4 _Color;
+			float _diffRange;
 			float _TileFactor;
 			sampler2D _Hatch0;
 			sampler2D _Hatch1;
@@ -81,7 +83,7 @@ Shader "C14/HatchingAndOutLine"
 				o.hatchWeights0 = fixed3(0, 0, 0);
 				o.hatchWeights1 = fixed3(0, 0, 0);
 				
-				float hatchFactor = diff * 7.0;
+				float hatchFactor = diff * _diffRange;
 				
 				if (hatchFactor > 6.0) {
 					// Pure white, do nothing

@@ -9,10 +9,10 @@ Shader "C14/Toon"
         _Color ("Color Tint", Color) = (1,1,1,1)
         _MainTex ("Mian Texture", 2D) = "white" {}
         _Ramp ("Ramp Texture", 2D) = "white" {}
-        _OutLine ("Outline", Range(0,1)) = 0.0075
+        _OutLine ("Outline", Range(0.0 ,1.1)) = 0.0075
         _OutLineColor ("Outline color", Color) = (0,0,0,1)
         _Specular ("Specular", Color) = (1,1,1,1)
-        _SpecularScale("Specular Scale", Range(0,0.1)) = 0.01 
+        _SpecularScale("Specular Scale", Range(0.0,0.5)) = 0.01 
     }
     SubShader
     {

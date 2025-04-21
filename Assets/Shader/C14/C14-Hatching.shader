@@ -7,7 +7,7 @@ Shader "C14/Hatch"
     Properties
     {
         _Color ("Color Tint", Color) = (1,1,1,1)
-        _TileFactor ("Tile Factor", Range(5,25)) = 10
+        _TileFactor ("Tile Factor", Range(5.0,15.0)) = 10.0
         _Outline ("Out line", Range(0,1)) = 0.1
         _Hatch0 ("Hatch 0", 2D) = "white"{}
         _Hatch1 ("Hatch 1", 2D) = "white"{}
