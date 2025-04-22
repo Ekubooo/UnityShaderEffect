@@ -9,9 +9,9 @@ Shader "C15/DynamicWater"
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_WaveMap ("Wave Map", 2D) = "bump" {}
 		_Cubemap ("Environment Cubemap", Cube) = "_Skybox" {}
-		_WaveXSpeed ("Wave Horizontal Speed", Range(-0.1, 0.1)) = 0.01
-		_WaveYSpeed ("Wave Vertical Speed", Range(-0.1, 0.1)) = 0.01		
-        _Distortion ("Distortion", Range(0, 1000)) = 100
+		_WaveXSpeed ("Wave Speed H", Range(-0.1, 0.1)) = 0.01
+		_WaveYSpeed ("Wave Speed V", Range(-0.1, 0.1)) = 0.01		
+        _Distortion ("Distortion", Range(0, 600)) = 300
 
     }
     SubShader
@@ -96,7 +96,10 @@ Shader "C15/DynamicWater"
 				// offset in tan_Space
 				float2 offset = bump.xy * _Distortion * _RefractionTex_TexelSize.xy;
                     // Related to Z: more deep, more distort
+                    // bind with main camera, but without free free view
 				i.scrPos.xy = offset * i.scrPos.z + i.scrPos.xy;
+                    // activite free view - bug
+				// i.scrPos.xy = offset * i.scrPos.xy;
 				fixed3 refrCol = tex2D( _RefractionTex, i.scrPos.xy/i.scrPos.w).rgb;
 				
 				// Convert the normal to world space
