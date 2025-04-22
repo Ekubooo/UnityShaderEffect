@@ -6,7 +6,7 @@ Shader "C15/Dissolve"
     Properties
     {
         _BurnAmount ("Burn Amount", Range(0.0, 1.0)) = 0.0
-		_LineWidth ("Burn Line Width", Range(0.0, 0.2)) = 0.1
+		_LineWidth ("Burn Line Width", Range(0.0, 1.0)) = 0.1
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_BumpMap ("Normal Map", 2D) = "bump" {}
 		_BurnFirstColor ("Burn First Color", Color) = (1, 0, 0, 1)
