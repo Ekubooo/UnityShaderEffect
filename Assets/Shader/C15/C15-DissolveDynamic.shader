@@ -1,12 +1,13 @@
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "C15/Dissolve"
+Shader "C15/DissolveDynamic"
 {
     Properties
     {
         _BurnAmount ("Burn Amount", Range(0.0, 1.0)) = 0.0
 		_LineWidth ("Burn Line Width", Range(0.0, 1.0)) = 0.1
+		_Speed ("Dissolve Speed", Range(0.0, 1.5)) = 0.5
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_BumpMap ("Normal Map", 2D) = "bump" {}
 		_BurnFirstColor ("Burn First Color", Color) = (1, 0, 0, 1)
@@ -42,6 +43,7 @@ Shader "C15/Dissolve"
 			fixed _LineWidth;
 			fixed4 _BurnFirstColor;
 			fixed4 _BurnSecondColor;
+			float _Speed;
 
             struct a2v
             {
@@ -81,9 +83,19 @@ Shader "C15/Dissolve"
 
             fixed4 frag (v2f i) : SV_Target
             {
+                // fixed3 burn = tex2D(_BurnMap, i.uvBurnMap + _Time.y * _Speed).rgb;
                 fixed3 burn = tex2D(_BurnMap, i.uvBurnMap).rgb;
-				
-				clip(burn.r - _BurnAmount);
+
+				// adding speed
+				float DissolveParameter = (_Time.y * _Speed) % 2;
+				if(DissolveParameter > 1)
+					DissolveParameter = 1 - DissolveParameter % 1;
+
+				// clip(p) is: p>0?(keep pixel):(discard pixel)
+				// clip(burn.r - _BurnAmount);			// origin handler
+				clip(burn.r - DissolveParameter);	// round play
+
+
 				float3 tangentLightDir = normalize(i.lightDir);
 				fixed3 tangentNormal = UnpackNormal(tex2D(_BumpMap, i.uvBumpMap));
 				
@@ -94,13 +106,16 @@ Shader "C15/Dissolve"
 				fixed3 diffuse = _LightColor0.rgb * albedo 
                     * max(0, dot(tangentNormal, tangentLightDir));
 
-				fixed t = 1 - smoothstep(0.0, _LineWidth, burn.r - _BurnAmount);
+				// fixed t = 1 - smoothstep(0.0, _LineWidth, burn.r - _BurnAmount);
+				fixed t = 1 - smoothstep(0.0, _LineWidth, burn.r - DissolveParameter);
 				fixed3 burnColor = lerp(_BurnFirstColor, _BurnSecondColor, t);
 				burnColor = pow(burnColor, 5);
 				
 				UNITY_LIGHT_ATTENUATION(atten, i, i.worldPos);
+				// fixed3 finalColor = lerp(ambient + diffuse * atten, 
+                    // burnColor, t * step(0.0001, _BurnAmount));
 				fixed3 finalColor = lerp(ambient + diffuse * atten, 
-                    burnColor, t * step(0.0001, _BurnAmount));
+					burnColor, t * step(0.0001, DissolveParameter));
 				
 				return fixed4(finalColor, 1);
             }
@@ -122,6 +137,7 @@ Shader "C15/Dissolve"
 			fixed _BurnAmount;
 			sampler2D _BurnMap;
 			float4 _BurnMap_ST;
+			float _Speed;
 			
 			struct v2f 
             {
@@ -140,7 +156,14 @@ Shader "C15/Dissolve"
 			fixed4 frag(v2f i) : SV_Target 
             {
 				fixed3 burn = tex2D(_BurnMap, i.uvBurnMap).rgb;
-				clip(burn.r - _BurnAmount);
+
+				// float DissolveParameter = (_Time.y * _Speed)%1;
+				float DissolveParameter = (_Time.y * _Speed) % 2;
+				if(DissolveParameter > 1)
+					DissolveParameter = 1 - DissolveParameter % 1;
+				// clip(burn.r - _BurnAmount);
+				clip(burn.r - DissolveParameter);
+
 				SHADOW_CASTER_FRAGMENT(i)
 			}
 			ENDCG
