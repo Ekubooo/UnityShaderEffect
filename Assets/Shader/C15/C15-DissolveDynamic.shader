@@ -87,14 +87,16 @@ Shader "C15/DissolveDynamic"
                 fixed3 burn = tex2D(_BurnMap, i.uvBurnMap).rgb;
 
 				// adding speed
-				float DissolveParameter = (_Time.y * _Speed) % 2;
-				if(DissolveParameter > 1)
-					DissolveParameter = 1 - DissolveParameter % 1;
-
-				// clip(p) is: p>0?(keep pixel):(discard pixel)
-				// clip(burn.r - _BurnAmount);			// origin handler
+				// float dpA = (_Time.y * _Speed) % 2;
+				// float DissolveParameter = dpA > 1 ? 1 - dpA % 1 : dpA;
+				float DissolveParameter = (_Time.y * _Speed) % 4;
+				if(DissolveParameter > 1 && DissolveParameter <= 2)
+					DissolveParameter = 1;
+				else if(DissolveParameter > 2 && DissolveParameter <= 3)
+					DissolveParameter = 1 - (DissolveParameter % 2) ;
+				else if(DissolveParameter > 3 && DissolveParameter <= 4)
+					DissolveParameter = 0;
 				clip(burn.r - DissolveParameter);	// round play
-
 
 				float3 tangentLightDir = normalize(i.lightDir);
 				fixed3 tangentNormal = UnpackNormal(tex2D(_BumpMap, i.uvBumpMap));
@@ -106,17 +108,15 @@ Shader "C15/DissolveDynamic"
 				fixed3 diffuse = _LightColor0.rgb * albedo 
                     * max(0, dot(tangentNormal, tangentLightDir));
 
-				// fixed t = 1 - smoothstep(0.0, _LineWidth, burn.r - _BurnAmount);
+				// fixed t = 1 - smoothstep(0.0, _LineWidth, burn.r - DissolveParameter);
 				fixed t = 1 - smoothstep(0.0, _LineWidth, burn.r - DissolveParameter);
 				fixed3 burnColor = lerp(_BurnFirstColor, _BurnSecondColor, t);
 				burnColor = pow(burnColor, 5);
 				
 				UNITY_LIGHT_ATTENUATION(atten, i, i.worldPos);
-				// fixed3 finalColor = lerp(ambient + diffuse * atten, 
-                    // burnColor, t * step(0.0001, _BurnAmount));
 				fixed3 finalColor = lerp(ambient + diffuse * atten, 
 					burnColor, t * step(0.0001, DissolveParameter));
-				
+
 				return fixed4(finalColor, 1);
             }
             ENDCG
@@ -157,11 +157,16 @@ Shader "C15/DissolveDynamic"
             {
 				fixed3 burn = tex2D(_BurnMap, i.uvBurnMap).rgb;
 
-				// float DissolveParameter = (_Time.y * _Speed)%1;
-				float DissolveParameter = (_Time.y * _Speed) % 2;
-				if(DissolveParameter > 1)
-					DissolveParameter = 1 - DissolveParameter % 1;
-				// clip(burn.r - _BurnAmount);
+				// float dpA = (_Time.y * _Speed) % 2;
+				// float DissolveParameter = dpA > 1 ? 1 - dpA % 1 : dpA;
+				float DissolveParameter = (_Time.y * _Speed) % 4;
+				if(DissolveParameter > 1 && DissolveParameter <= 2)
+					DissolveParameter = 1;
+				else if(DissolveParameter > 2 && DissolveParameter <= 3)
+					DissolveParameter = 1 - (DissolveParameter % 2) ;
+				else if(DissolveParameter > 3 && DissolveParameter <= 4)
+					DissolveParameter = 0;
+				// clip(burn.r - DissolveParameter);
 				clip(burn.r - DissolveParameter);
 
 				SHADOW_CASTER_FRAGMENT(i)
