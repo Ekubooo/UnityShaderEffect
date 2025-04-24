@@ -43,22 +43,22 @@ public class FogWithNoise : PostEffectsBase
 	}
 
 	[Range(0.1f, 3.0f)]
-	public float fogDensity = 1.0f;
+	public float fogDensity = 1.5f;
 
 	public Color fogColor = Color.white;
 
-	public float fogStart = 0.0f;
+	public float fogStart = 1.0f;
 	public float fogEnd = 2.0f;
 
 	public Texture noiseTexture;
 
 	[Range(-0.5f, 0.5f)]
-	public float fogXSpeed = 0.1f;
+	public float fogXSpeed = 0.25f;
 	[Range(-0.5f, 0.5f)]
-	public float fogYSpeed = 0.1f;
+	public float fogYSpeed = 0.25f;
 
 	[Range(0.0f, 3.0f)]
-	public float noiseAmount = 1.0f;
+	public float noiseAmount = 1.75f;
 
 	void OnEnable() 
 	{
