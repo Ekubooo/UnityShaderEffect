@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DissolveMat
-  m_Shader: {fileID: 4800000, guid: 00ba5a172389edd419451da49ac2c214, type: 3}
+  m_Name: DissolveDyMat
+  m_Shader: {fileID: 4800000, guid: d223c72378b4ab14d9a7049cb19b12b6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -74,7 +74,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _BurnAmount: 0.42
+    - _BurnAmount: 0.02
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Distortion: 300
@@ -82,7 +82,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LineWidth: 0
+    - _LineWidth: 0.17
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
