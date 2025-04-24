@@ -83,6 +83,7 @@ Shader "C15/DissolveDynamic"
 
             fixed4 frag (v2f i) : SV_Target
             {
+				// texture animations
                 // fixed3 burn = tex2D(_BurnMap, i.uvBurnMap + _Time.y * _Speed).rgb;
                 fixed3 burn = tex2D(_BurnMap, i.uvBurnMap).rgb;
 

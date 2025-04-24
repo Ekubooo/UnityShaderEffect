@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 395967834}
   - component: {fileID: 395967835}
   - component: {fileID: 395967836}
+  - component: {fileID: 395967837}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -278,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fogShader: {fileID: 4800000, guid: f506c659079e76743a5f65e81c5f9387, type: 3}
   fogDensity: 3
-  fogColor: {r: 0.81761, g: 0.81761, b: 0.81761, a: 1}
+  fogColor: {r: 0.76729554, g: 0.76729554, b: 0.76729554, a: 1}
   fogStart: 0
   fogEnd: 1.5
 --- !u!114 &395967836
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395967828}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 428dfaaa29311e24cb2fdbab158e05f6, type: 3}
   m_Name: 
@@ -300,6 +301,27 @@ MonoBehaviour:
   sampleDistance: 2
   sensitivityDepth: 4.0625
   sensitivityNormals: 2
+--- !u!114 &395967837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395967828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe0d95814e28934187eae1293124914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogShader: {fileID: 4800000, guid: d545c0e48df030148bb5ee4928594298, type: 3}
+  fogDensity: 1
+  fogColor: {r: 1, g: 1, b: 1, a: 1}
+  fogStart: 0
+  fogEnd: 2
+  noiseTexture: {fileID: 2800000, guid: b05cae330270fd4459f50a5c81fcc846, type: 3}
+  fogXSpeed: 0.5
+  fogYSpeed: 0.5
+  noiseAmount: 1.41
 --- !u!1 &652749515
 GameObject:
   m_ObjectHideFlags: 0
