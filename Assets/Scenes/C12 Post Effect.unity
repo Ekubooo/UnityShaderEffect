@@ -410,7 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   briSatConShader: {fileID: 4800000, guid: d26745db5b0a2a54d83a49eb5fe85f1a, type: 3}
   brightness: 1
-  saturation: 1
+  saturation: 3
   contrast: 1
 --- !u!114 &1685378180
 MonoBehaviour:
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeDetectShader: {fileID: 4800000, guid: 7dc46f79b9afe474d81a0759e17f2556, type: 3}
-  edgesOnly: 0.5
+  edgesOnly: 0.8
   edgeColor: {r: 1, g: 1, b: 1, a: 1}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &1685378181
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gaussianBlurShader: {fileID: 4800000, guid: 19d0dd0d3a5165045a5f7a6dce43600c, type: 3}
-  iterations: 1
+  iterations: 3
   blurSpread: 1
   downSample: 1
 --- !u!114 &1685378182
@@ -451,16 +451,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685378175}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a283ed1e6c073541b1694fccbe61a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bloomShader: {fileID: 4800000, guid: b7a4a0ba774d8e84b8e24926812ca750, type: 3}
-  iterations: 1
+  iterations: 0
   blurSpread: 1
   downSample: 1
-  luminanceThreshold: 1
+  luminanceThreshold: 0
 --- !u!1 &1745064187
 GameObject:
   m_ObjectHideFlags: 0

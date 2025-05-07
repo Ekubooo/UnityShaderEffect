@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 533c01ea16504a74e8b1cbce12c365a1, type: 2}
-  burnSpeed: 0.13
+  burnSpeed: 0.261
 --- !u!1 &1896429271
 GameObject:
   m_ObjectHideFlags: 0
